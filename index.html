@@ -12,9 +12,9 @@
 <body>
 
     <div id="icono">
-        <img src="https://cdn.freelogodesign.org/files/8cf86c9f85b944edbc2d3943efe282fb/thumb/logo_200x200.png?v=0">
+        <img id="logo" src="https://cdn.freelogodesign.org/files/8cf86c9f85b944edbc2d3943efe282fb/thumb/logo_200x200.png?v=0">
     </div>
-    <h1>Bienvenidos al Banco del Futuro</h1>
+    <h1>Bienvenido al Banco del Futuro</h1>
     <h2>Introduce tus datos</h2>
     <div>
         <label>Nombre: </label>
@@ -30,15 +30,9 @@
         <input type="text" id="apellido1" placeholder="Primer apellido" pattern="[/^[A-Z]+$/i]*" required
             onkeypress="soloLetras2()">
         <p id="papellido1">apellido ok o no ok</p>
-
         <input type="text" id="apellido2" placeholder="Segundo apellido" pattern="[/^[A-Z]+$/i]*" required
             onkeypress="soloLetras3()">
         <p id="papellido2">apellido ok o no ok</p>
-
-
-
-
-
     </div>
     <br>
     <br>
@@ -50,9 +44,9 @@
     <label>Correo Electronico: </label>
     <br>
     <input type="email" id="email" placeholder="Correo electronico" required pattern=".+@beststartupever\.com"
-        title="Inserte un correo electronico valido">
+        title="Inserte un correo electronico valido: nombre(admite puntos y guiones bajos)@Dominio.RestoDominio">
     <input type="email" id="email1" placeholder="Correo electronico" required pattern=".+@beststartupever\.com"
-        title="Inserte un correo electronico valido">
+        title="Repite el correo">
     <p>prueba</p>
     <label>D.N.I: </label>
     <br>

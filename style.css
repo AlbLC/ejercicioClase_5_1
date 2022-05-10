@@ -1,6 +1,9 @@
 #nombre:first-letter {
     text-transform: capitalize;
   }
+body {
+  font-family: Georgia;
+}
 p {
   margin:5px;
 }
@@ -28,5 +31,9 @@ div #flota {
  
 }
 #logo {
-  border-radius: 50px;
+  border-radius: 100%;
+  margin-left: 20px;
+}
+#apellido2 {
+  display: inline-block;
 }
