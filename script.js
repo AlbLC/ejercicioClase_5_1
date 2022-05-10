@@ -7,7 +7,7 @@ window.onload = function () {
     var email1 = document.getElementById("email1").value;
     var dni = document.getElementById("dni").value;
     var intereses = document.getElementById("intereses").value;
-    var password = document.getElementById("password").value;
+    var password = document.getElementById("contrasena").value;
 
 }
 
@@ -68,58 +68,202 @@ function soloLetras3() {
 
 
 
+
+//Validar email
 function emailValidar() {
     var email = document.getElementById("email").value;
     var email1 = document.getElementById("email1").value;
 
-    //COmprobar los email entre si
+    //event listener
+    //onkeypress="comprobar()"
+
+    //Comprobar los email entre si
     var contador = 0;
     if (email.length == email1.length) {
         for (let i = 0; i < email.length; i++) {
 
             if (email[i] != email1[i]) {
                 i = email.length;
-                console.log("Los email introducidos no coinciden");
+                document.getElementById("email2").innerText = "Email no valido"
+                //console.log("Los email introducidos no coinciden");
 
             } else {
                 contador++;
             }
-            if (contador == email.length) {
-                console.log("Los email introducidos coinciden");
+            if (contador == email1.length) {
+                document.getElementById("email2").innerText = "Email valido"
+                //console.log("Los email introducidos coinciden");
+
+
+                let antesArroba = [];
+                let contador1 = 0;
+                let arroba = 0;
+
+                //crear la variable antesArroba parac comprobar luego su validez
+                for (let i = 0; i < email1.length; i++) {
+                    if (email1[i] == '@') {
+                        antesArroba = email1.slice(0, i);
+                        arroba = i + 1;
+                        i = email1.length;
+                    } else {
+                        contador1++;
+                    }
+                }
+                //console.log(antesArroba)
+                //console.log(contador1)
+
+                if (contador1 == email1.length) {
+                    //console.log('falta el @')
+                    document.getElementById("email2").innerText = "Email no valido, falta el @"
+                }
+
+                for (let i = 0; i < antesArroba.length; i++) {
+                    if (((antesArroba[i].charCodeAt() >= 65) && (antesArroba[i].charCodeAt() <= 90)) || ((antesArroba[i].charCodeAt() >= 97) && (antesArroba[i].charCodeAt() <= 122)) || (antesArroba[i].charCodeAt() == 46) || (antesArroba[i].charCodeAt() == 95)) {
+                        //console.log("Nombre corecto");
+                        //console.log(antesArroba[i])
+                        document.getElementById("email2").innerText = "Email valido"
+
+
+                        //crear el variable dominio parac comprobar luego su validez
+                        var dominio = [];
+                        var punto = 0;
+                        for (let i = arroba; i < email1.length; i++) {
+                            if (email1[i] == '.') {
+                                dominio = email1.slice(arroba, i);
+                                punto = i + 1;
+                                console.log(dominio);
+
+                            } else {
+                                contador1++;
+                            }
+                        }
+
+                        var contador2 = 0;
+                        arrayDominio = ["yahoo", "gmail", "hotmail", "thebridge", "outlook"]
+                        for (let i = 0; i < arrayDominio.length; i++) {
+                            if (dominio == arrayDominio[i]) {
+                                //console.log("Dominio valido")
+                                document.getElementById("email2").innerText = "Email valido"
+
+                                //Comprobar resto dominio
+                                var restoDominio = email1.slice(punto, email.length);
+                                console.log(restoDominio)
+                                if ((restoDominio == "es") || (restoDominio == "com") || (restoDominio == "net")) {
+                                    //console.log("resto dominio valido")
+                                    document.getElementById("email2").innerText = "Email valido"
+                                } else {
+                                    //console.log("resto dominio no valido")
+                                    document.getElementById("email2").innerText = "Email no valido"
+                                }
+
+
+                                i = arrayDominio.length
+                            } else {
+                                contador2++
+                            }
+                        }
+                        if (contador2 == arrayDominio.length) {
+                            document.getElementById("email2").innerText = "Email no valido"
+                            //console.log('El dominio no es válido')
+                        }
+
+
+
+
+                    } else {
+                        i = antesArroba.length;
+                        document.getElementById("email2").innerText = "Email no valido"
+                        //console.log("Nombre incorecto");
+                    }
+                }
+
+
+
+
             }
         }
     } else {
-        console.log("11Los email introducidos no coinciden");
+        document.getElementById("email2").innerText = "Email no valido"
+        //console.log("11Los email introducidos no coinciden");
     }
 
 
-}
 
-//COmprobar la validez del email
-let antesArroba=[];
-let contador1=0;
-for (let i = 0; i < email.length; i++) {
-    if (email[i] == '@') {
-       antesArroba= email.slice(0,i);
 
+    function registrado() {
+    var mayusculas = 0;
+    var minusculas = 0;
+    var numeros = 0;
+    var simbolo = 0;
+    var password = document.getElementById("contrasena").value;
+    for (let i = 0; i < password.length; i++) {
+        if ((password[i].charCodeAt() >= 65) && (password[i].charCodeAt() <= 90)) {
+            mayusculas++
+        }
+        if ((password[i].charCodeAt() >= 97) && (password[i].charCodeAt() <= 122)) {
+            minusculas++
+        }
+        if ((password[i].charCodeAt() >= 48) && (password[i].charCodeAt() <= 57)) {
+            numeros++
+        }
+        if ((password[i].charCodeAt() >= 33) && (password[i].charCodeAt() <= 47) || (password[i].charCodeAt() >= 58) && (password[i].charCodeAt() <= 64) || (password[i].charCodeAt() >= 91) && (password[i].charCodeAt() <= 96) || (password[i].charCodeAt() >= 123) && (password[i].charCodeAt() <= 126)) {
+            simbolo++
+        }
+    }
+    if (mayusculas >= 1 && minusculas >= 1 && numeros >= 2 && simbolo >= 1) {
+        console.log('contraseña válida')
+        document.getElementById("contrasena1").innerText = "Contraseña valida"
     } else {
-        contador1 ++;
+        document.getElementById("contrasena1").innerText = "Contraseña no valida"
+        console.log('contraseña no válida')
     }
 }
-console.log(antesArroba)
-console.log(contador1)
-if(contador1 == email.length) {
-    console.log('falta el @')
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
 
 function registrado() {
-
-
-
-
-
+    var mayusculas = 0;
+    var minusculas = 0;
+    var numeros = 0;
+    var simbolo = 0;
+    var password = document.getElementById("contrasena").value;
+    for (let i = 0; i < password.length; i++) {
+        if ((password[i].charCodeAt() >= 65) && (password[i].charCodeAt() <= 90)) {
+            mayusculas++
+        }
+        if ((password[i].charCodeAt() >= 97) && (password[i].charCodeAt() <= 122)) {
+            minusculas++
+        }
+        if ((password[i].charCodeAt() >= 48) && (password[i].charCodeAt() <= 57)) {
+            numeros++
+        }
+        if ((password[i].charCodeAt() >= 33) && (password[i].charCodeAt() <= 47) || (password[i].charCodeAt() >= 58) && (password[i].charCodeAt() <= 64) || (password[i].charCodeAt() >= 91) && (password[i].charCodeAt() <= 96) || (password[i].charCodeAt() >= 123) && (password[i].charCodeAt() <= 126)) {
+            simbolo++
+        }
+    }
+    if (mayusculas >= 1 && minusculas >= 1 && numeros >= 2 && simbolo >= 1) {
+        //console.log('contraseña válida')
+        document.getElementById("contrasena1").innerText = "Contraseña valida"
+    } else {
+        document.getElementById("contrasena1").innerText = "Contraseña no valida"
+        //console.log('contraseña no válida')
+    }
     var reg = document.createElement('h2');
     var contenido = document.createTextNode('Te has registrado con éxito');
     reg.appendChild(contenido);
     document.body.appendChild(reg);
-};
+}
+

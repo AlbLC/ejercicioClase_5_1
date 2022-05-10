@@ -12,7 +12,8 @@
 <body>
 
     <div id="icono">
-        <img id="logo" src="https://cdn.freelogodesign.org/files/8cf86c9f85b944edbc2d3943efe282fb/thumb/logo_200x200.png?v=0">
+        <img id="logo"
+            src="https://cdn.freelogodesign.org/files/8cf86c9f85b944edbc2d3943efe282fb/thumb/logo_200x200.png?v=637878081020000000">
     </div>
     <h1>Bienvenido al Banco del Futuro</h1>
     <h2>Introduce tus datos</h2>
@@ -43,10 +44,16 @@
     <p>prueba</p>
     <label>Correo Electronico: </label>
     <br>
-    <input type="email" id="email" placeholder="Correo electronico" required pattern=".+@beststartupever\.com"
-        title="Inserte un correo electronico valido: nombre(admite puntos y guiones bajos)@Dominio.RestoDominio">
-    <input type="email" id="email1" placeholder="Correo electronico" required pattern=".+@beststartupever\.com"
-        title="Repite el correo">
+
+    <input type="email" id="email" placeholder="Correo electronico" required
+        title="Inserte un correo electronico valido">
+    <input type="email" id="email1" placeholder="Correo electronico" required
+        title="Inserte un correo electronico valido" onkeyup="emailValidar()">
+    <p id="email2">email ok o no ok</p>
+
+
+
+
     <p>prueba</p>
     <label>D.N.I: </label>
     <br>
@@ -58,11 +65,11 @@
     <p>prueba</p>
     <label>Contraseña: </label>
     <br>
-    <input type="password" id="password" placeholder="Contraseña" minlength="8" maxlength="20"
+    <input type="password" id="contrasena" placeholder="Contraseña" minlength="8" maxlength="20"
         title=" Mínimo 8 caracteres y máximo 20, debe contener al menos una mayúscula, al menos una minúscula, al menos dos números y al menos un símbolo."
         required>
-    <p>prueba</p>
 
+    <p id="contrasena1">Contraseña ok o no ok</p>
     <button onclick="registrado();">Registrar</button>
 
     <script src="script.js"></script>
