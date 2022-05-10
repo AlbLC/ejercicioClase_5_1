@@ -16,7 +16,7 @@
             src="https://cdn.freelogodesign.org/files/8cf86c9f85b944edbc2d3943efe282fb/thumb/logo_200x200.png?v=637878081020000000">
     </div>
     <h1>Bienvenido al Banco del Futuro</h1>
-    <h2>Introduce tus datos</h2>
+    <h2 id="datos">Introduce tus datos</h2>
     <div>
         <label>Nombre: </label>
         <br>
@@ -54,11 +54,12 @@
 
 
 
-    <p>prueba</p>
+    
     <label>D.N.I: </label>
     <br>
-    <input type="text" id="dni" placeholder="DNI" required>
-    <p>prueba</p>
+    <input type="text" id="dni" placeholder="DNI" maxlength="9" required onkeyup="identifi()">
+    <p id="dni1">DNI ok o no ok</p>
+    
     <label>Intereses: </label>
     <br>
     <input type="text" id="intereses" placeholder="Intereses">

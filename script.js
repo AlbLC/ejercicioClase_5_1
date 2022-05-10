@@ -13,6 +13,7 @@ window.onload = function () {
 
 
 
+
 // document.getElementById('nombre').addEventListener('keypress', (e) => {
 //     e.preventDefault()
 //     if ((KeyboardEvent.key < 65) || (KeyboardEvent.keyCode > 90) && (KeyboardEvent.keyCode < 97) || (KeyboardEvent.keyCode > 122)) {
@@ -121,9 +122,7 @@ function emailValidar() {
                     if (((antesArroba[i].charCodeAt() >= 65) && (antesArroba[i].charCodeAt() <= 90)) || ((antesArroba[i].charCodeAt() >= 97) && (antesArroba[i].charCodeAt() <= 122)) || (antesArroba[i].charCodeAt() == 46) || (antesArroba[i].charCodeAt() == 95)) {
                         //console.log("Nombre corecto");
                         //console.log(antesArroba[i])
-                        document.getElementById("email2").innerText = "Email valido"
-
-
+                        //document.getElementById("email2").innerText = "Email valido"
                         //crear el variable dominio parac comprobar luego su validez
                         var dominio = [];
                         var punto = 0;
@@ -137,25 +136,23 @@ function emailValidar() {
                                 contador1++;
                             }
                         }
-
                         var contador2 = 0;
                         arrayDominio = ["yahoo", "gmail", "hotmail", "thebridge", "outlook"]
                         for (let i = 0; i < arrayDominio.length; i++) {
                             if (dominio == arrayDominio[i]) {
                                 //console.log("Dominio valido")
-                                document.getElementById("email2").innerText = "Email valido"
-
+                                //document.getElementById("email2").innerText = "Email valido"
                                 //Comprobar resto dominio
                                 var restoDominio = email1.slice(punto, email.length);
                                 console.log(restoDominio)
                                 if ((restoDominio == "es") || (restoDominio == "com") || (restoDominio == "net")) {
                                     //console.log("resto dominio valido")
                                     document.getElementById("email2").innerText = "Email valido"
+        
                                 } else {
                                     //console.log("resto dominio no valido")
                                     document.getElementById("email2").innerText = "Email no valido"
                                 }
-
 
                                 i = arrayDominio.length
                             } else {
@@ -167,9 +164,6 @@ function emailValidar() {
                             //console.log('El dominio no es válido')
                         }
 
-
-
-
                     } else {
                         i = antesArroba.length;
                         document.getElementById("email2").innerText = "Email no valido"
@@ -177,60 +171,43 @@ function emailValidar() {
                     }
                 }
 
-
-
-
             }
         }
     } else {
         document.getElementById("email2").innerText = "Email no valido"
         //console.log("11Los email introducidos no coinciden");
     }
-
-
-
-
-    function registrado() {
-    var mayusculas = 0;
-    var minusculas = 0;
-    var numeros = 0;
-    var simbolo = 0;
-    var password = document.getElementById("contrasena").value;
-    for (let i = 0; i < password.length; i++) {
-        if ((password[i].charCodeAt() >= 65) && (password[i].charCodeAt() <= 90)) {
-            mayusculas++
-        }
-        if ((password[i].charCodeAt() >= 97) && (password[i].charCodeAt() <= 122)) {
-            minusculas++
-        }
-        if ((password[i].charCodeAt() >= 48) && (password[i].charCodeAt() <= 57)) {
-            numeros++
-        }
-        if ((password[i].charCodeAt() >= 33) && (password[i].charCodeAt() <= 47) || (password[i].charCodeAt() >= 58) && (password[i].charCodeAt() <= 64) || (password[i].charCodeAt() >= 91) && (password[i].charCodeAt() <= 96) || (password[i].charCodeAt() >= 123) && (password[i].charCodeAt() <= 126)) {
-            simbolo++
-        }
-    }
-    if (mayusculas >= 1 && minusculas >= 1 && numeros >= 2 && simbolo >= 1) {
-        console.log('contraseña válida')
-        document.getElementById("contrasena1").innerText = "Contraseña valida"
-    } else {
-        document.getElementById("contrasena1").innerText = "Contraseña no valida"
-        console.log('contraseña no válida')
-    }
 }
 
 
+function identifi() {
 
+    //se le pide al usuario que introduzca su dni
+    var dni = document.getElementById("dni").value;
+    //console.log(dni)
+    var numero = dni.slice(0, dni.length - 1);
+    //console.log(numero)
 
+    if (numero > "99999999") {
+        //si el numero es mayor pues se le comunica al usuario
+        document.getElementById("dni1").innerText = ("El DNI introducido no es valido");
+    }
+    var letra_dni = dni[8].toUpperCase();
+    //calculamos la diferencia de la división para saber la posición
+    var resto = numero % 23;
+    var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+    var encontrado = letras[resto];
 
-
-
-
-
-
+    if (encontrado == letra_dni) {
+        document.getElementById("dni1").innerText = ("El DNI introducido es valido")
+    
+        //alert(`El dni insertado ${numero} con letra  ${letra_dni} es CORRECTO`);
+    }
+    else {
+        document.getElementById("dni1").innerText = ("El DNI introducido no es valido")
+        //alert(`El dni insertado ${numero} con letra  ${letra_dni} es INCORRECTO`);
+    }
 }
-
-
 
 
 
@@ -257,13 +234,15 @@ function registrado() {
     if (mayusculas >= 1 && minusculas >= 1 && numeros >= 2 && simbolo >= 1) {
         //console.log('contraseña válida')
         document.getElementById("contrasena1").innerText = "Contraseña valida"
+        
     } else {
         document.getElementById("contrasena1").innerText = "Contraseña no valida"
         //console.log('contraseña no válida')
+        document.getElementById("datos").innerText = "Te has registrado con éxito"
     }
-    var reg = document.createElement('h2');
-    var contenido = document.createTextNode('Te has registrado con éxito');
-    reg.appendChild(contenido);
-    document.body.appendChild(reg);
+    
 }
 
+//Falta para implementar el input de la direccion, el de intereses
+//Poner un if general, con todos los apartados, si se cumplen todas las condiciones de los inputs, cambiar en H2 que tenemos puesto con el mensaje "Te has registrado con éxito", si falla algun input, poner el mensaje "Comprueba los datos introducidos"
+//Mejorar el aspecto de la aplicacion
