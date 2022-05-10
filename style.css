@@ -1,0 +1,32 @@
+#nombre:first-letter {
+    text-transform: capitalize;
+  }
+p {
+  margin:5px;
+}
+div {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  height: 70px;
+}
+body {
+  margin: 5px;
+  background: linear-gradient(45deg, rgba(17, 178, 103, 0.75) 0%, rgba(197, 239, 71, 0.75) 100%);
+  background-attachment: fixed;
+  text-align: center;
+}
+
+div #flota {
+  text-align: right;
+}
+#icono {
+  color: white;
+  padding: 1px;
+  width: fit-content;
+  position: sticky;
+  top: 20px;
+ 
+}
+#logo {
+  border-radius: 50px;
+}

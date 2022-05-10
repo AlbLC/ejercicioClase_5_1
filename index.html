@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="icono">
+        <img src="https://cdn.freelogodesign.org/files/8cf86c9f85b944edbc2d3943efe282fb/thumb/logo_200x200.png?v=0">
+    </div>
+    <h1>Bienvenidos al Banco del Futuro</h1>
+    <h2>Introduce tus datos</h2>
+    <div>
+        <label>Nombre: </label>
+        <br>
+        <input type="text" id="nombre" placeholder="Nombre" pattern="[a-zA-Z]*" required onkeypress="soloLetras1()">
+        <p id="pnombre">nombre ok o no ok</p>
+        <br>
+    </div>
+
+    <div>
+        <label> Apellidos: </label>
+        <br>
+        <input type="text" id="apellido1" placeholder="Primer apellido" pattern="[/^[A-Z]+$/i]*" required
+            onkeypress="soloLetras2()">
+        <p id="papellido1">apellido ok o no ok</p>
+
+        <input type="text" id="apellido2" placeholder="Segundo apellido" pattern="[/^[A-Z]+$/i]*" required
+            onkeypress="soloLetras3()">
+        <p id="papellido2">apellido ok o no ok</p>
+
+
+
+
+
+    </div>
+    <br>
+    <br>
+    <br>
+    <label>Direccion: </label>
+    <br>
+    <input type="text" id="direccion" placeholder="Direccion" required>
+    <p>prueba</p>
+    <label>Correo Electronico: </label>
+    <br>
+    <input type="email" id="email" placeholder="Correo electronico" required pattern=".+@beststartupever\.com"
+        title="Inserte un correo electronico valido">
+    <input type="email" id="email1" placeholder="Correo electronico" required pattern=".+@beststartupever\.com"
+        title="Inserte un correo electronico valido">
+    <p>prueba</p>
+    <label>D.N.I: </label>
+    <br>
+    <input type="text" id="dni" placeholder="DNI" required>
+    <p>prueba</p>
+    <label>Intereses: </label>
+    <br>
+    <input type="text" id="intereses" placeholder="Intereses">
+    <p>prueba</p>
+    <label>Contraseña: </label>
+    <br>
+    <input type="password" id="password" placeholder="Contraseña" minlength="8" maxlength="20"
+        title=" Mínimo 8 caracteres y máximo 20, debe contener al menos una mayúscula, al menos una minúscula, al menos dos números y al menos un símbolo."
+        required>
+    <p>prueba</p>
+
+    <button onclick="registrado();">Registrar</button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
