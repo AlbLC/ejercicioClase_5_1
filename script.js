@@ -75,8 +75,7 @@ function emailValidar() {
     var email = document.getElementById("email").value;
     var email1 = document.getElementById("email1").value;
 
-    //event listener
-    //onkeypress="comprobar()"
+   
 
     //Comprobar los email entre si
     var contador = 0;
@@ -86,21 +85,21 @@ function emailValidar() {
             if (email[i] != email1[i]) {
                 i = email.length;
                 document.getElementById("email2").innerText = "Email no valido"
-                //console.log("Los email introducidos no coinciden");
+                
 
             } else {
                 contador++;
             }
             if (contador == email1.length) {
                 document.getElementById("email2").innerText = "Email valido"
-                //console.log("Los email introducidos coinciden");
+                
 
 
                 let antesArroba = [];
                 let contador1 = 0;
                 let arroba = 0;
 
-                //crear la variable antesArroba parac comprobar luego su validez
+                //Crear la variable antesArroba parac comprobar luego su validez
                 for (let i = 0; i < email1.length; i++) {
                     if (email1[i] == '@') {
                         antesArroba = email1.slice(0, i);
@@ -110,19 +109,18 @@ function emailValidar() {
                         contador1++;
                     }
                 }
-                //console.log(antesArroba)
-                //console.log(contador1)
+                
 
                 if (contador1 == email1.length) {
-                    //console.log('falta el @')
+                    
                     document.getElementById("email2").innerText = "Email no valido, falta el @"
                 }
 
                 for (let i = 0; i < antesArroba.length; i++) {
                     if (((antesArroba[i].charCodeAt() >= 65) && (antesArroba[i].charCodeAt() <= 90)) || ((antesArroba[i].charCodeAt() >= 97) && (antesArroba[i].charCodeAt() <= 122)) || (antesArroba[i].charCodeAt() == 46) || (antesArroba[i].charCodeAt() == 95)) {
-                        //console.log("Nombre corecto");
-                        //console.log(antesArroba[i])
-                        //document.getElementById("email2").innerText = "Email valido"
+                        
+                        
+                        
                         //crear el variable dominio parac comprobar luego su validez
                         var dominio = [];
                         var punto = 0;
@@ -140,17 +138,17 @@ function emailValidar() {
                         arrayDominio = ["yahoo", "gmail", "hotmail", "thebridge", "outlook"]
                         for (let i = 0; i < arrayDominio.length; i++) {
                             if (dominio == arrayDominio[i]) {
-                                //console.log("Dominio valido")
+                                
                                 //document.getElementById("email2").innerText = "Email valido"
                                 //Comprobar resto dominio
                                 var restoDominio = email1.slice(punto, email.length);
                                 console.log(restoDominio)
                                 if ((restoDominio == "es") || (restoDominio == "com") || (restoDominio == "net")) {
-                                    //console.log("resto dominio valido")
+                                    
                                     document.getElementById("email2").innerText = "Email valido"
         
                                 } else {
-                                    //console.log("resto dominio no valido")
+                                    
                                     document.getElementById("email2").innerText = "Email no valido"
                                 }
 
@@ -161,13 +159,13 @@ function emailValidar() {
                         }
                         if (contador2 == arrayDominio.length) {
                             document.getElementById("email2").innerText = "Email no valido"
-                            //console.log('El dominio no es válido')
+                            
                         }
 
                     } else {
                         i = antesArroba.length;
                         document.getElementById("email2").innerText = "Email no valido"
-                        //console.log("Nombre incorecto");
+                        
                     }
                 }
 
@@ -175,25 +173,26 @@ function emailValidar() {
         }
     } else {
         document.getElementById("email2").innerText = "Email no valido"
-        //console.log("11Los email introducidos no coinciden");
+       
     }
 }
 
 
 function identifi() {
 
-    //se le pide al usuario que introduzca su dni
+    //Se le pide al usuario que introduzca su dni
     var dni = document.getElementById("dni").value;
     //console.log(dni)
     var numero = dni.slice(0, dni.length - 1);
-    //console.log(numero)
+    
 
     if (numero > "99999999") {
-        //si el numero es mayor pues se le comunica al usuario
+
+        //Si el numero es mayor pues se le comunica al usuario
         document.getElementById("dni1").innerText = ("El DNI introducido no es valido");
     }
     var letra_dni = dni[8].toUpperCase();
-    //calculamos la diferencia de la división para saber la posición
+    //Salculamos la diferencia de la división para saber la posición
     var resto = numero % 23;
     var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
     var encontrado = letras[resto];
@@ -201,11 +200,11 @@ function identifi() {
     if (encontrado == letra_dni) {
         document.getElementById("dni1").innerText = ("El DNI introducido es valido")
     
-        //alert(`El dni insertado ${numero} con letra  ${letra_dni} es CORRECTO`);
+        
     }
     else {
         document.getElementById("dni1").innerText = ("El DNI introducido no es valido")
-        //alert(`El dni insertado ${numero} con letra  ${letra_dni} es INCORRECTO`);
+        
     }
 }
 
@@ -232,13 +231,13 @@ function registrado() {
         }
     }
     if (mayusculas >= 1 && minusculas >= 1 && numeros >= 2 && simbolo >= 1) {
-        //console.log('contraseña válida')
+        
         document.getElementById("contrasena1").innerText = "Contraseña valida"
         
     } else {
         document.getElementById("contrasena1").innerText = "Contraseña no valida"
-        //console.log('contraseña no válida')
-        document.getElementById("datos").innerText = "Te has registrado con éxito"
+       
+        //document.getElementById("datos").innerText = "Te has registrado con éxito"
     }
     
 }
